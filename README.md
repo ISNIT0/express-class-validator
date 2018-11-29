@@ -4,7 +4,7 @@ This is a very simple middleware for using simplifying the use of [class-validat
 
 > It may not be worth **installing** this package
 > 
-> Please consider copy-pasting the source from [./lib/index.ts](./lib/index.ts)
+> Please consider copy-pasting the source from [./lib/index.ts](https://github.com/ISNIT0/express-class-validator/blob/master/lib/index.ts)
 
 ## Install
 ```
@@ -12,7 +12,7 @@ npm i express-class-validator
 ```
 
 ## Usage
-See [./sample/index.ts](./sample/index.ts) for a working example (`npx ts-node sample/index.ts`)
+See [./sample/index.ts](https://github.com/ISNIT0/express-class-validator/blob/master/sample/index.ts) for a working example (`npx ts-node sample/index.ts`)
 ```typescript
 import { makeValidateBody } from 'express-class-validator'
 
@@ -58,4 +58,4 @@ The `makeValidateBody` method takes two arguments:
 
 
 ## License
-See [./LICENSE](./LICENSE)
+See [./LICENSE](https://github.com/ISNIT0/express-class-validator/blob/master/LICENSE)
