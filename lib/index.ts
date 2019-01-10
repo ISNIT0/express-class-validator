@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-function makeValidateBody<T>(c: T, errorHandler?: (err: any, req: Request, res: Response, next: NextFunction) => void) {
+function makeValidateBody<T>(c: T, whitelist = true, errorHandler?: (err: any, req: Request, res: Response, next: NextFunction) => void) {
     return function ExpressClassValidate(req: Request, res: Response, next: NextFunction) {
         const toValidate = req.body
         if (!toValidate) {
@@ -20,7 +20,7 @@ function makeValidateBody<T>(c: T, errorHandler?: (err: any, req: Request, res: 
                 })
             }
         } else {
-            transformAndValidate(c as any, toValidate)
+            transformAndValidate(c as any, toValidate, { validator: { whitelist } })
                 .then(transformed => {
                     req.body = transformed
                     next()

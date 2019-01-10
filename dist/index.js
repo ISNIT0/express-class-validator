@@ -13,7 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var class_transformer_validator_1 = require("class-transformer-validator");
 var isProd = process.env.NODE_ENV === 'production';
-function makeValidateBody(c, errorHandler) {
+function makeValidateBody(c, whitelist, errorHandler) {
+    if (whitelist === void 0) { whitelist = true; }
     return function ExpressClassValidate(req, res, next) {
         var toValidate = req.body;
         if (!toValidate) {
@@ -27,7 +28,7 @@ function makeValidateBody(c, errorHandler) {
             }
         }
         else {
-            class_transformer_validator_1.transformAndValidate(c, toValidate)
+            class_transformer_validator_1.transformAndValidate(c, toValidate, { validator: { whitelist: whitelist } })
                 .then(function (transformed) {
                 req.body = transformed;
                 next();
